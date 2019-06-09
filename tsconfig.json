@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    /* Basic Options */
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "dist/out-tsc",
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "importHelpers": true,
+    "sourceMap": true,
+    /* Strict Type-Checking Options */
+    "alwaysStrict": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    /* Module Resolution Options */
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    /* Experimental Options */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    /* Other */
+    "declaration": false,
+    "pretty": true,
+    /* Custom Paths */
+    "paths": {
+      "ngx-url": [
+        "projects/ngx-url/src/public-api"
+      ]
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "extends": "tslint:recommended",
+  "defaultSeverity": "warning",
+  "rulesDirectory": [
+    "codelyzer"
+  ],
+  "rules": {
+    /*** TSLINT ***/
+    /* TypeScript-specific */
+    "member-access": [
+      true,
+      "check-accessor",
+      "check-constructor",
+      "check-parameter-property"
+    ],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "constructor",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    ],
+    "no-magic-numbers": true,
+    "no-namespace": [
+      true,
+      "allow-declarations"
+    ],
+    "no-non-null-assertion": true,
+    "no-var-requires": true,
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ],
+    /* Functionality */
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-empty": false,
+    "no-switch-case-fall-through": true,
+    /* Maintainability */
+    "deprecation": true,
+    "object-literal-sort-keys": false,
+    /* Style */
+    "array-type": false,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "no-redundant-jsdoc": true,
+    "object-literal-key-quotes": [
+      true,
+      "as-needed"
+    ],
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "any",
+        "named-imports-order": "case-insensitive"
+      }
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    /* Format */
+    "max-line-length": [
+      true,
+      {
+        "limit": 100,
+        "ignore-pattern": "^} from '|^(im|ex)port ({[^,]*}|\\*)"
+      }
+    ],
+    "no-consecutive-blank-lines": [
+      true,
+      2
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    /*** CODELYZER ***/
+    /* Functionality */
+    "contextual-lifecycle": true,
+    "no-output-native": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true,
+    "use-lifecycle-interface": true,
+    /* Maintainability */
+    "component-max-inline-declarations": [
+      true,
+      {
+        "animations": 0,
+        "styles": 0,
+        "template": 1
+      }
+    ],
+    "no-conflicting-lifecycle": true,
+    "no-input-rename": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "use-pipe-transform-interface": true,
+    /* Style */
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "no-host-metadata-property": true,
+    "no-inputs-metadata-property": true,
+    "no-outputs-metadata-property": true,
+    "no-queries-metadata-property": true,
+    "prefer-inline-decorator": [
+      true,
+      {
+        "getters": false,
+        "methods": false,
+        "setters": false
+      }
+    ]
+  },
+  "linterOptions": {
+    "exclude": [
+      "**/node_modules/**"
+    ]
+  }
+}

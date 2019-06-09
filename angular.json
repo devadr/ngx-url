@@ -1,0 +1,161 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-url": {
+      "projectType": "library",
+      "root": "projects/ngx-url",
+      "sourceRoot": "projects/ngx-url/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-url/tsconfig.lib.json",
+            "project": "projects/ngx-url/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-url/src/test.ts",
+            "tsConfig": "projects/ngx-url/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-url/karma.conf.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-url/tsconfig.lib.json",
+              "projects/ngx-url/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-url-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ngx-url-demo",
+      "sourceRoot": "projects/ngx-url-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-url-demo",
+            "index": "projects/ngx-url-demo/src/index.html",
+            "main": "projects/ngx-url-demo/src/main.ts",
+            "polyfills": "projects/ngx-url-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-url-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/ngx-url-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-url-demo/src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-url-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-url-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-url-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-url-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-url-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-url-demo/src/test.ts",
+            "polyfills": "projects/ngx-url-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-url-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-url-demo/karma.conf.ts",
+            "assets": [
+              "projects/ngx-url-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-url-demo/src/styles.scss"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-url-demo/tsconfig.app.json",
+              "projects/ngx-url-demo/tsconfig.spec.json",
+              "projects/ngx-url-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngx-url-demo/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-url-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-url-demo:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "ngx-url",
+  "schematics": {
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush",
+      "style": "scss"
+    }
+  }
+}

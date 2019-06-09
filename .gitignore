@@ -1,0 +1,40 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.classpath
+.project
+.c9/
+.settings/
+*.launch
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/typings
+libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
+# System Files
+Thumbs.db
