@@ -35,7 +35,8 @@ export class Url implements _Url_ {
   }
 
   public getPath(index: number): string | undefined {
-    return this.getSegmentPath(index);
+    const segment: UrlSegment | undefined = this.segments[index] as UrlSegment | undefined;
+    return segment && segment.path;
   }
 
   private getSegments(groupName: string): UrlSegment[] {
@@ -43,14 +44,6 @@ export class Url implements _Url_ {
       this.tree.root.children[groupName] as UrlSegmentStrictGroup
     );
     return group && group.segments || [];
-  }
-
-  private getSegmentPath(
-    index: number,
-    segments: UrlSegment[] = this.segments,
-  ): string | undefined {
-    const segment: UrlSegment | undefined = segments[index] as UrlSegment | undefined;
-    return segment && segment.path;
   }
 
 }
