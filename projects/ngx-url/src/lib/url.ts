@@ -22,6 +22,10 @@ export class Url implements _Url_ {
     return this.getSegments('primary');
   }
 
+  public get fragment(): string | null {
+    return this.tree.fragment;
+  }
+
   public get queryParamMap(): ParamMap {
     return this.tree.queryParamMap;
   }
