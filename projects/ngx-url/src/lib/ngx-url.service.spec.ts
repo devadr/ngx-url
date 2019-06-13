@@ -1,11 +1,11 @@
 import {TestBed} from '@angular/core/testing';
-import {NgxUrlService} from 'ngx-url';
+import {UrlService} from 'ngx-url';
 
-describe('NgxUrlService', () => {
+describe('UrlService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NgxUrlService = TestBed.get(NgxUrlService);
+    const service: UrlService = TestBed.get(UrlService);
     expect(service).toBeTruthy();
   });
 });
