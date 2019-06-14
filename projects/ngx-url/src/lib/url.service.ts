@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router, RouterEvent, RoutesRecognized} from '@angular/router';
 import {Url} from './url';
-import {Url as _Url_, UrlChanges} from './models';
+import {UrlChanges, UrlState} from 'ngx-url';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 import {createStream, Stream} from 'wrapped-stream';
@@ -28,19 +28,19 @@ export class UrlService {
     return this.urlChanges.source.value;
   }
 
-  private static getUrlChanges(previous: _Url_, current: _Url_): UrlChanges {
+  private static getUrlChanges(previous: UrlState, current: UrlState): UrlChanges {
     return {
       previous,
       current,
     };
   }
 
-  public getUrlState(url: string): _Url_ {
+  public getUrlState(url: string): UrlState {
     return new Url(this.router.parseUrl(url));
   }
 
   private getUrlChangesStream(): Stream<BehaviorSubject<UrlChanges>> {
-    const initialState: _Url_ = this.getUrlState('');
+    const initialState: UrlState = this.getUrlState('');
     return createStream(
       new BehaviorSubject(UrlService.getUrlChanges(initialState, initialState)),
     );

@@ -2,9 +2,8 @@ import {Component, NgZone} from '@angular/core';
 import {fakeAsync, TestBed} from '@angular/core/testing';
 import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
-import {UrlService} from 'ngx-url';
+import {UrlChanges, UrlService} from 'ngx-url';
 import {Url} from './url';
-import {UrlChanges} from './models';
 
 describe('UrlService', () => {
 

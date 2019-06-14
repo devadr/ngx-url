@@ -1,8 +1,8 @@
 import {ParamMap, Params, UrlSegment, UrlTree} from '@angular/router';
-import {Url as _Url_, UrlSegmentStrictGroup} from './models';
+import {UrlSegmentStrictGroup, UrlState} from 'ngx-url';
 
 
-export class Url implements _Url_ {
+export class Url implements UrlState {
 
   public readonly full: string;
 

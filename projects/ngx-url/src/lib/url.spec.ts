@@ -1,16 +1,17 @@
 import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TestBed} from '@angular/core/testing';
+import {UrlState} from 'ngx-url';
 import {Url} from './url';
 
 describe('Url', () => {
 
   let router: Router;
 
-  let url1: Url;
-  let url2: Url;
+  let url1: UrlState;
+  let url2: UrlState;
 
-  function getUrlData(url: string): Url {
+  function getUrlData(url: string): UrlState {
     return new Url(router.parseUrl(url));
   }
 
