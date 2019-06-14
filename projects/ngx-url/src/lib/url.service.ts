@@ -13,46 +13,46 @@ import {createStream, Stream} from 'wrapped-stream';
 
 export class UrlService {
 
-  private readonly urlChanges: Stream<BehaviorSubject<UrlChanges>>;
+  private readonly changes: Stream<BehaviorSubject<UrlChanges>>;
 
   public constructor(private router: Router) {
-    this.urlChanges = this.getUrlChangesStream();
-    this.watchUrlChanges(this.urlChanges);
+    this.changes = this.getChangesStream();
+    this.watchChanges(this.changes);
   }
 
-  public get urlChanges$(): Observable<UrlChanges> {
-    return this.urlChanges.$;
+  public get changes$(): Observable<UrlChanges> {
+    return this.changes.$;
   }
 
-  public get urlChangesValue(): UrlChanges {
-    return this.urlChanges.source.value;
+  public get changesValue(): UrlChanges {
+    return this.changes.source.value;
   }
 
-  private static getUrlChanges(previous: UrlState, current: UrlState): UrlChanges {
+  private static generateChanges(previous: UrlState, current: UrlState): UrlChanges {
     return {
       previous,
       current,
     };
   }
 
-  public getUrlState(url: string): UrlState {
+  public createState(url: string): UrlState {
     return new Url(this.router.parseUrl(url));
   }
 
-  private getUrlChangesStream(): Stream<BehaviorSubject<UrlChanges>> {
-    const initialState: UrlState = this.getUrlState('');
+  private getChangesStream(): Stream<BehaviorSubject<UrlChanges>> {
+    const initialState: UrlState = this.createState('');
     return createStream(
-      new BehaviorSubject(UrlService.getUrlChanges(initialState, initialState)),
+      new BehaviorSubject(UrlService.generateChanges(initialState, initialState)),
     );
   }
 
-  private watchUrlChanges(stream: Stream<BehaviorSubject<UrlChanges>>): void {
+  private watchChanges(stream: Stream<BehaviorSubject<UrlChanges>>): void {
     this.router.events
       .pipe(
         filter((e: RouterEvent) => e instanceof RoutesRecognized),
-        map(({urlAfterRedirects}: RoutesRecognized) => UrlService.getUrlChanges(
-          this.urlChangesValue.current,
-          this.getUrlState(urlAfterRedirects),
+        map(({urlAfterRedirects}: RoutesRecognized) => UrlService.generateChanges(
+          this.changesValue.current,
+          this.createState(urlAfterRedirects),
         )),
       )
       .subscribe(stream.source);

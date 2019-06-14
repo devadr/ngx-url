@@ -41,18 +41,18 @@ describe('UrlService', () => {
   );
 
   it(
-    'should be able to get a url state',
-    () => expect(urlService.getUrlState('/')).toEqual(jasmine.any(Url)),
+    'should be able to create a url state',
+    () => expect(urlService.createState('/')).toEqual(jasmine.any(Url)),
   );
 
   it(
     'should track url changes (previous and current) and expose it in a stream',
-    () => urlService.urlChanges$.subscribe(testUrlChanges),
+    () => urlService.changes$.subscribe(testUrlChanges),
   );
 
   it(
     'should expose indirect access to url changes',
-    () => testUrlChanges(urlService.urlChangesValue),
+    () => testUrlChanges(urlService.changesValue),
   );
 
   it(
@@ -60,11 +60,11 @@ describe('UrlService', () => {
     fakeAsync(() => {
       ngZone.run(() => {
         router.navigateByUrl('a').then(() => {
-          let {previous, current}: UrlChanges = urlService.urlChangesValue;
+          let {previous, current}: UrlChanges = urlService.changesValue;
           expect(previous.basePath).toBeUndefined();
           expect(current.basePath).toBe('a');
           router.navigateByUrl('b').then(() => {
-            ({previous, current} = urlService.urlChangesValue);
+            ({previous, current} = urlService.changesValue);
             expect(previous.basePath).toBe('a');
             expect(current.basePath).toBe('b');
           });
