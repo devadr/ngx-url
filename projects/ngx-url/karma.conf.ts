@@ -45,7 +45,7 @@ function setConfig(config: Configuration): void {
         'lcovonly',
         'text-summary',
       ],
-      dir: path.join(__dirname, '../../coverage/slidable-router-outlet'),
+      dir: path.join(__dirname, '../../coverage/ngx-url'),
       fixWebpackSourcePaths: true,
     },
   });
