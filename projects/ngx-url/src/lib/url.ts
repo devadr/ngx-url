@@ -1,5 +1,6 @@
 import {ParamMap, Params, UrlSegment, UrlTree} from '@angular/router';
-import {UrlSegmentStrictGroup, UrlState} from 'ngx-url';
+// noinspection TypeScriptPreferShortImport
+import {UrlSegmentStrictGroup, UrlState} from './typings';
 
 
 export class Url implements UrlState {

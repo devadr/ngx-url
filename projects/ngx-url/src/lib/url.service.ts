@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router, RouterEvent, RoutesRecognized} from '@angular/router';
 import {Url} from './url';
-import {UrlChanges, UrlState} from 'ngx-url';
+// noinspection TypeScriptPreferShortImport
+import {UrlChanges, UrlState} from './typings';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 import {createStream, Stream} from 'wrapped-stream';
