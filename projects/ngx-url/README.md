@@ -4,15 +4,6 @@ NgxUrl is an Angular library for dealing with url in a more convenient way.
 It allows easy access to particular parts of the url. It also provides tracking of url changes,
 so that it is easy to compare current and previous urls.
 
-## Table of Contents
-
-- [Installation](https://github.com/devadr/ngx-url#installation)
-- [Usage](https://github.com/devadr/ngx-url#usage)
-- [Issues](https://github.com/devadr/ngx-url#issues)
-- [Contributing](https://github.com/devadr/ngx-url#contributing)
-- [Development](https://github.com/devadr/ngx-url#development)
-- [License](https://github.com/devadr/ngx-url#license)
-
 ## Installation
 
 NPM:
@@ -106,4 +97,4 @@ Or if you want to debug your code in a browser, run `test-debug` script.
 
 ## License
 
-The code is available under the [MIT License](https://github.com/devadr/ngx-url/blob/release/v1.0.0/LICENSE).
+The code is available under the [MIT License](https://github.com/devadr/ngx-url/blob/release/v1.0.0/projects/ngx-url/LICENSE).
