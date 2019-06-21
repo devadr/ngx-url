@@ -1,9 +1,7 @@
-import {ParamMap, Params, UrlSegment, UrlTree} from '@angular/router';
-// noinspection TypeScriptPreferShortImport
-import {UrlSegmentStrictGroup, UrlState} from './typings';
+import {ParamMap, Params, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 
 
-export class Url implements UrlState {
+export class UrlState {
 
   public readonly full: string;
 
@@ -11,11 +9,11 @@ export class Url implements UrlState {
     this.full = tree.toString();
   }
 
-  public get basePath(): string | undefined {
-    return this.getPath(0);
+  public get baseSegmentPath(): string | undefined {
+    return this.getSegmentPath(0);
   }
 
-  public get paths(): string[] {
+  public get segmentPaths(): string[] {
     return this.segments.map(({path}: UrlSegment) => path);
   }
 
@@ -35,15 +33,13 @@ export class Url implements UrlState {
     return this.tree.queryParams;
   }
 
-  public getPath(index: number): string | undefined {
+  public getSegmentPath(index: number): string | undefined {
     const segment: UrlSegment | undefined = this.segments[index] as UrlSegment | undefined;
     return segment && segment.path;
   }
 
   private getSegments(groupName: string): UrlSegment[] {
-    const group: UrlSegmentStrictGroup = (
-      this.tree.root.children[groupName] as UrlSegmentStrictGroup
-    );
+    const group: UrlSegmentGroup | undefined = this.tree.root.children[groupName];
     return group && group.segments || [];
   }
 

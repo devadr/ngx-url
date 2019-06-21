@@ -2,15 +2,14 @@ import {Component, NgZone} from '@angular/core';
 import {fakeAsync, TestBed} from '@angular/core/testing';
 import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
-import {UrlChanges, UrlService} from 'ngx-url';
-import {Url} from './url';
+import {Url, UrlChanges} from 'ngx-url';
+import {UrlState} from './url';
 
-describe('UrlService', () => {
 
-  let urlService: UrlService;
+describe('Url', () => {
 
+  let url: Url;
   let router: Router;
-
   let ngZone: NgZone;
 
   beforeEach(() => TestBed.configureTestingModule({
@@ -30,29 +29,29 @@ describe('UrlService', () => {
   }));
 
   beforeEach(() => {
-    urlService = TestBed.get(UrlService);
+    url = TestBed.get(Url);
     router = TestBed.get(Router);
     ngZone = TestBed.get(NgZone);
   });
 
   it(
     'should be created',
-    () => expect(urlService).toBeTruthy(),
+    () => expect(url).toBeTruthy(),
   );
 
   it(
     'should be able to create a url state',
-    () => expect(urlService.createState('/')).toEqual(jasmine.any(Url)),
+    () => expect(url.createState('/')).toEqual(jasmine.any(UrlState)),
   );
 
   it(
     'should track url changes (previous and current) and expose it in a stream',
-    () => urlService.changes$.subscribe(testUrlChanges),
+    () => url.changes$.subscribe(testChanges),
   );
 
   it(
     'should expose indirect access to url changes',
-    () => testUrlChanges(urlService.changesValue),
+    () => testChanges(url.changesValue),
   );
 
   it(
@@ -60,13 +59,13 @@ describe('UrlService', () => {
     fakeAsync(() => {
       ngZone.run(() => {
         router.navigateByUrl('a').then(() => {
-          let {previous, current}: UrlChanges = urlService.changesValue;
-          expect(previous.basePath).toBeUndefined();
-          expect(current.basePath).toBe('a');
+          let {previous, current}: UrlChanges = url.changesValue;
+          expect(previous.baseSegmentPath).toBeUndefined();
+          expect(current.baseSegmentPath).toBe('a');
           router.navigateByUrl('b').then(() => {
-            ({previous, current} = urlService.changesValue);
-            expect(previous.basePath).toBe('a');
-            expect(current.basePath).toBe('b');
+            ({previous, current} = url.changesValue);
+            expect(previous.baseSegmentPath).toBe('a');
+            expect(current.baseSegmentPath).toBe('b');
           });
         });
       });
@@ -75,9 +74,9 @@ describe('UrlService', () => {
 
 });
 
-function testUrlChanges({current, previous}: UrlChanges): void {
-  expect(current).toEqual(jasmine.any(Url));
-  expect(previous).toEqual(jasmine.any(Url));
+function testChanges({current, previous}: UrlChanges): void {
+  expect(current).toEqual(jasmine.any(UrlState));
+  expect(previous).toEqual(jasmine.any(UrlState));
 }
 
 @Component({template: ''})

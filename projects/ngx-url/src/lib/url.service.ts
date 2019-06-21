@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router, RouterEvent, RoutesRecognized} from '@angular/router';
-import {Url} from './url';
+import {UrlState} from './url';
 // noinspection TypeScriptPreferShortImport
-import {UrlChanges, UrlState} from './typings';
+import {UrlChanges} from './typings';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 import {createStream, Stream} from 'wrapped-stream';
@@ -12,7 +12,7 @@ import {createStream, Stream} from 'wrapped-stream';
   providedIn: 'root',
 })
 
-export class UrlService {
+export class Url {
 
   private readonly changes: Stream<BehaviorSubject<UrlChanges>>;
 
@@ -37,13 +37,13 @@ export class UrlService {
   }
 
   public createState(url: string): UrlState {
-    return new Url(this.router.parseUrl(url));
+    return new UrlState(this.router.parseUrl(url));
   }
 
   private getChangesStream(): Stream<BehaviorSubject<UrlChanges>> {
     const initialState: UrlState = this.createState('');
     return createStream(
-      new BehaviorSubject(UrlService.generateChanges(initialState, initialState)),
+      new BehaviorSubject(Url.generateChanges(initialState, initialState)),
     );
   }
 
@@ -51,7 +51,7 @@ export class UrlService {
     this.router.events
       .pipe(
         filter((e: RouterEvent) => e instanceof RoutesRecognized),
-        map(({urlAfterRedirects}: RoutesRecognized) => UrlService.generateChanges(
+        map(({urlAfterRedirects}: RoutesRecognized) => Url.generateChanges(
           this.changesValue.current,
           this.createState(urlAfterRedirects),
         )),
