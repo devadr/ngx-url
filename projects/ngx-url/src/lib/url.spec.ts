@@ -29,9 +29,9 @@ describe('Url', () => {
   }));
 
   beforeEach(() => {
-    url = TestBed.get(Url);
-    router = TestBed.get(Router);
-    ngZone = TestBed.get(NgZone);
+    url = TestBed.get<Url>(Url);
+    router = TestBed.get<Router>(Router);
+    ngZone = TestBed.get<NgZone>(NgZone);
   });
 
   it(
@@ -50,7 +50,7 @@ describe('Url', () => {
   );
 
   it(
-    'should expose indirect access to url changes',
+    'should expose direct access to url changes',
     () => testChanges(url.changesValue),
   );
 
