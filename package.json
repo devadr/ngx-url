@@ -3,12 +3,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build-lib": "ng build",
-    "build-demo": "ng build ngx-url-demo",
-    "test-lib": "ng test",
-    "test-demo": "ng test ngx-url-demo",
-    "lint-lib": "ng lint",
-    "lint-demo": "ng lint ngx-url-demo",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
