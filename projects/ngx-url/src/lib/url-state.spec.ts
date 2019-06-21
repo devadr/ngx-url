@@ -1,7 +1,7 @@
 import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TestBed} from '@angular/core/testing';
-import {UrlState} from './url';
+import {UrlState} from './url-state';
 
 
 describe('UrlState', () => {

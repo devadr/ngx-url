@@ -1,4 +1,4 @@
-import {UrlState} from './url';
+import {UrlState} from './url-state';
 
 export interface UrlChanges {
   previous: UrlState;

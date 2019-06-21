@@ -3,7 +3,8 @@ import {fakeAsync, TestBed} from '@angular/core/testing';
 import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Url, UrlChanges} from 'ngx-url';
-import {UrlState} from './url';
+import {UrlState} from './url-state';
+
 
 
 describe('Url', () => {
