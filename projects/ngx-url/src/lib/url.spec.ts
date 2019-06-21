@@ -6,7 +6,6 @@ import {Url, UrlChanges} from 'ngx-url';
 import {UrlState} from './url-state';
 
 
-
 describe('Url', () => {
 
   let url: Url;
