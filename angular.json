@@ -22,7 +22,9 @@
             "main": "projects/ngx-url/src/test.ts",
             "tsConfig": "projects/ngx-url/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-url/karma.conf.ts",
-            "codeCoverage": true
+            "codeCoverage": true,
+            "progress": false,
+            "watch": false
           }
         },
         "lint": {

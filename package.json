@@ -5,8 +5,9 @@
     "start": "ng serve --open",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test-watch": "ng test --watch",
+    "test-debug": "npm run test-watch -- --browsers Chrome",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
