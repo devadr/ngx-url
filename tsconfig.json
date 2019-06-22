@@ -2,9 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     /* Basic Options */
-    "module": "commonjs",
-    "target": "es5",
-    "outDir": "dist/out-tsc",
     "lib": [
       "dom",
       "es2018"

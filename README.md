@@ -1,27 +1,109 @@
 # NgxUrl
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+NgxUrl is an Angular library for dealing with url in a more convenient way.
+It allows easy access to particular parts of the url. It also provides tracking of url changes,
+so that it is easy to compare current and previous urls.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [Installation](https://github.com/devadr/ngx-url#installation)
+- [Usage](https://github.com/devadr/ngx-url#usage)
+- [Issues](https://github.com/devadr/ngx-url#issues)
+- [Contributing](https://github.com/devadr/ngx-url#contributing)
+- [Development](https://github.com/devadr/ngx-url#development)
+- [License](https://github.com/devadr/ngx-url#license)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+NPM:
 
-## Build
+```bash
+npm install ngx-url
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Yarn:
 
-## Running unit tests
+```bash
+yarn add ngx-url
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+Use `Url` as any other service:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```typescript
+import {Url} from 'ngx-url'; 
 
-## Further help
+class Component {
+  constructor(private url: Url) { }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+With `Url` service you are able to:
+
+* create a url state containing handy properties
+
+```typescript
+const urlState = this.url.createState('some/url/');
+```
+
+* subscribe to url changes that are updated on every navigation
+
+```typescript
+this.url.changes$.subscribe(({current, previous}: UrlChanges) => {
+  // do your stuff
+});
+```
+
+* get recently updated url changes without subscribing
+
+```typescript
+const changes = this.url.changesValue;
+```
+
+## Issues
+
+If you find any issue or have an idea regarding the project and want to share with it,
+do not hesitate to open a new [issue](https://github.com/devadr/ngx-url/issues).
+
+## Contributing
+
+Contributions are welcome. Submit a [pull request](https://github.com/devadr/ngx-url/pulls) if you want to apply your changes.
+
+## Development
+
+### Build
+
+Run 
+
+```
+ng build
+```
+
+or
+
+```
+npm run build
+```
+
+or
+
+```
+yarn run build
+```
+
+to build the project. The build artifacts will be stored in the dist/ directory.
+
+### Test
+
+You can test the project in three ways by running an appropriate script defined in package.json file.
+
+If you want to run disposable tests, run `test` script.
+
+In case you want to watch for changes in files being tested, run `test-watch` script.
+
+Or if you want to debug your code in a browser, run `test-debug` script.
+
+## License
+
+The code is available under the [MIT License](https://github.com/devadr/ngx-url/blob/master/LICENSE).

@@ -20,6 +20,12 @@ interface Configuration extends Config {
 function setConfig(config: Configuration): void {
   config.set({
     basePath: 'src',
+    browsers: [
+      'ChromeHeadless',
+    ],
+    client: {
+      clearContext: false,
+    },
     frameworks: [
       'jasmine',
       '@angular-devkit/build-angular',
@@ -31,21 +37,17 @@ function setConfig(config: Configuration): void {
       'karma-coverage-istanbul-reporter',
       '@angular-devkit/build-angular/plugins/karma',
     ],
-    client: {
-      clearContext: false,
-    },
     reporters: [
-      'progress',
+      'dots',
       'kjhtml',
     ],
-    browsers: ['Chrome'],
     coverageIstanbulReporter: {
       reports: [
         'html',
         'lcovonly',
         'text-summary',
       ],
-      dir: path.join(__dirname, '../../coverage/slidable-router-outlet'),
+      dir: path.join(__dirname, '../../coverage/ngx-url'),
       fixWebpackSourcePaths: true,
     },
   });

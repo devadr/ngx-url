@@ -1,24 +1,100 @@
 # NgxUrl
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+NgxUrl is an Angular library for dealing with url in a more convenient way.
+It allows easy access to particular parts of the url. It also provides tracking of url changes,
+so that it is easy to compare current and previous urls.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project ngx-url` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-url`.
-> Note: Don't forget to add `--project ngx-url` or else it will be added to the default project in your `angular.json` file. 
+NPM:
 
-## Build
+```bash
+npm install ngx-url
+```
 
-Run `ng build ngx-url` to build the project. The build artifacts will be stored in the `dist/` directory.
+Yarn:
 
-## Publishing
+```bash
+yarn add ngx-url
+```
 
-After building your library with `ng build ngx-url`, go to the dist folder `cd dist/ngx-url` and run `npm publish`.
+## Usage
 
-## Running unit tests
+Use `Url` as any other service:
 
-Run `ng test ngx-url` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import {Url} from 'ngx-url'; 
 
-## Further help
+class Component {
+  constructor(private url: Url) { }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+With `Url` service you are able to:
+
+* create a url state containing handy properties
+
+```typescript
+const urlState = this.url.createState('some/url/');
+```
+
+* subscribe to url changes that are updated on every navigation
+
+```typescript
+this.url.changes$.subscribe(({current, previous}: UrlChanges) => {
+  // do your stuff
+});
+```
+
+* get recently updated url changes without subscribing
+
+```typescript
+const changes = this.url.changesValue;
+```
+
+## Issues
+
+If you find any issue or have an idea regarding the project and want to share with it,
+do not hesitate to open a new [issue](https://github.com/devadr/ngx-url/issues).
+
+## Contributing
+
+Contributions are welcome. Submit a [pull request](https://github.com/devadr/ngx-url/pulls) if you want to apply your changes.
+
+## Development
+
+### Build
+
+Run 
+
+```
+ng build
+```
+
+or
+
+```
+npm run build
+```
+
+or
+
+```
+yarn run build
+```
+
+to build the project. The build artifacts will be stored in the dist/ directory.
+
+### Test
+
+You can test the project in three ways by running an appropriate script defined in package.json file.
+
+If you want to run disposable tests, run `test` script.
+
+In case you want to watch for changes in files being tested, run `test-watch` script.
+
+Or if you want to debug your code in a browser, run `test-debug` script.
+
+## License
+
+The code is available under the [MIT License](https://github.com/devadr/ngx-url/blob/release/v1.0.0/projects/ngx-url/LICENSE).
