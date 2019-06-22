@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router, RouterEvent, RoutesRecognized} from '@angular/router';
+// noinspection TypeScriptPreferShortImport
 import {UrlState} from './url-state';
 // noinspection TypeScriptPreferShortImport
 import {UrlChanges} from './typings';
