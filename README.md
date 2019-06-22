@@ -106,4 +106,4 @@ Or if you want to debug your code in a browser, run `test-debug` script.
 
 ## License
 
-The code is available under the [MIT License](https://github.com/devadr/ngx-url/blob/release/v1.0.0/LICENSE).
+The code is available under the [MIT License](https://github.com/devadr/ngx-url/blob/master/LICENSE).
