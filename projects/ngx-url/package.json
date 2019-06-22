@@ -1,6 +1,6 @@
 {
   "name": "ngx-url",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "An Angular library for dealing with url in a more convenient way",
   "keywords": [
     "angular",
