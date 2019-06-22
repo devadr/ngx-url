@@ -1,6 +1,27 @@
 {
   "name": "ngx-url",
   "version": "0.0.0",
+  "description": "An Angular library for dealing with url in a more convenient way",
+  "keywords": [
+    "angular",
+    "current",
+    "changes",
+    "ng",
+    "ngx",
+    "path",
+    "previous",
+    "segments",
+    "service",
+    "url"
+  ],
+  "homepage": "https://github.com/devadr/ngx-url#readme",
+  "bugs": "https://github.com/devadr/ngx-url/issues",
+  "license": "MIT",
+  "author": "devadr",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/devadr/ngx-url.git"
+  },
   "peerDependencies": {
     "@angular/common": ">=8.0.0",
     "@angular/core": ">=8.0.0",
